@@ -4,6 +4,7 @@ import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import WagmiProvider from "../utils/wagmiprovider";
 
 import Navbar from "../components/Navbar";
+import { useState } from "react";
 
 const colors = {
   brand: {
@@ -23,15 +24,28 @@ const config = {
   initialColorMode: "dark",
   useSystemColorMode: false,
 };
+import {
+  AnonAadhaarProof,
+  LogInWithAnonAadhaar,
+  useAnonAadhaar,
+  useProver,
+  AnonAadhaarProvider,
+} from "@anon-aadhaar/react";
 
 const theme = extendTheme({ colors, config });
 
 export default function App({ Component, pageProps }: AppProps) {
+  const [useTestAadhaar, setUseTestAadhaar] = useState<boolean>(false);
   return (
     <WagmiProvider>
       <ChakraProvider theme={theme}>
-        <Navbar />
-        <Component {...pageProps} />
+        <AnonAadhaarProvider
+          _useTestAadhaar={useTestAadhaar}
+          _appName="Anon Aadhaar"
+        >
+          <Navbar />
+          <Component {...pageProps} />
+        </AnonAadhaarProvider>
       </ChakraProvider>
     </WagmiProvider>
   );

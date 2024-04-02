@@ -643,6 +643,15 @@ const Form3 = ({ getDegree, getLicenseNo }) => {
   );
 };
 
+import { useEffect } from "react";
+import {
+  AnonAadhaarProof,
+  LogInWithAnonAadhaar,
+  useAnonAadhaar,
+  useProver,
+} from "@anon-aadhaar/react";
+import { AnonAadhaarCore, packGroth16Proof } from "@anon-aadhaar/core";
+
 export default function Multistep() {
   const toast = useToast();
   const [step, setStep] = useState(1);
@@ -656,8 +665,27 @@ export default function Multistep() {
   const [degree, setDegree] = useState("");
   const [licenseNo, setLicenseNo] = useState("");
   const [loading, setLoading] = useState(false);
+  const [anonAadhaar] = useAnonAadhaar();
+  const [, latestProof] = useProver();
+
+  useEffect(() => {
+    if (anonAadhaar.status === "logged-in") {
+      console.log(anonAadhaar.status);
+    }
+  }, [anonAadhaar]);
 
   const handleSubmit = async () => {
+    if (anonAadhaar.status === "logged-out") {
+      toast({
+        title: "Aadhaar Not Connected",
+        description: "Please connect aadhaar to register as  a doctor",
+        status: "error",
+        duration: 1000,
+        isClosable: true,
+        position: "top-right",
+      });
+      return;
+    }
     const data = { email: email };
 
     fetch("http://localhost:5000/register-doctor", {
@@ -680,7 +708,14 @@ export default function Multistep() {
         signer
       );
       const accounts = await provider.listAccounts();
-
+      console.log(name);
+      console.log(adhar);
+      console.log(licenseNo);
+      console.log(age);
+      console.log(email);
+      console.log(spec);
+      console.log(profile);
+      console.log(degree);
       const tx = await contract.createUser(
         name,
         adhar,

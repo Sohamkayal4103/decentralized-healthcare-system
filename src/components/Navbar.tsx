@@ -188,7 +188,18 @@ export default function Navbar() {
                   ) : null}
                 </>
               ) : null}
-
+              <HStack
+                as={"nav"}
+                spacing={4}
+                display={{ base: "none", md: "flex" }}
+                marginRight={4}
+              >
+                <Link href="/aadhaar-login">
+                  <Button w="full" variant="ghost">
+                    Aadhaar Login
+                  </Button>
+                </Link>
+              </HStack>
               <HStack>
                 <ConnectButton />
               </HStack>
