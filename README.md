@@ -1,22 +1,9 @@
-## GnosisSocial 🚀
+## Decentralized Healthcare System 🚀
+
+# Introduction 🔥
+In an era of rapid technological advancement, the need for a resilient and efficient healthcare system is more critical than ever. Traditional healthcare models often struggle with issues related to accessibility, security, and trust. This project proposes a decentralized healthcare system as a novel approach to address these challenges, leveraging the capabilities of blockchain technology.
 
 ## TechStack Used 🎯
-Solidity
-ethers.js
-Next.js
-RainbowKit
-Metamask
-openzeppelin
-ParticleAuth
-WalletConnect
-Typescript
-Javascript
-Chakra UI
-Sepolia Testnet
-Alchemy
-Wagmi
-Nodemailer
-
 <li>Solidity</li>
 <li>ethers.js</li>
 <li>Next.js</li>
@@ -29,9 +16,8 @@ Nodemailer
 <li>Chakra UI</li>
 <li>Sepolia Testnet</li>
 <li>Alchemy</li>
-<li>Arbitrum Sepolia Testnet</li>
 <li>Wagmi</li>
-<li>ONodemailer</li>
+<li>Nodemailer</li>
 
 ## Local Setup 🚧
 
